@@ -7,14 +7,17 @@ fn gen_name(lic: &CustomServer) -> ResultType<String> {
     Ok(tmp.chars().rev().collect())
 }
 
-if args.len() >= 2 {
-    match gen_name(&CustomServer {
-        key: "39.105.209.108".to_string(),
-        host: "".to_string(),
-        api: "".to_string(),
-        relay: "C+1zHO9JLk6LFA8RdbpKiCKXU4HUf8zIsmzYFvxL8LI=".to_string(),
-    }) {
-        Ok(name) => println!("rustdesk-custom_serverd-{}.exe", name),
-        Err(e) => println!("{:?}", e),
+fn main() {
+    let args: Vec<String> = std::env::args().collect();
+    if args.len() >= 2 {
+        match gen_name(&CustomServer {
+            key: "39.105.209.108".to_string(),
+            host: "".to_string(),
+            api: "".to_string(),
+            relay: "C+1zHO9JLk6LFA8RdbpKiCKXU4HUf8zIsmzYFvxL8LI=".to_string(),
+        }) {
+            Ok(name) => println!("rustdesk-custom_serverd-{}.exe", name),
+            Err(e) => println!("{:?}", e),
+        }
     }
 }
